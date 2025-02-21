@@ -1,0 +1,6 @@
+[submodule "vroom-vehicle-client"]
+	path = vroom-vehicle-client
+	url = git@github.com:AquarioDeterminado/vroom-vehicle-client.git
+[submodule "vroom-api"]
+	path = vroom-api
+	url = git@github.com:AquarioDeterminado/vroom-api.git
