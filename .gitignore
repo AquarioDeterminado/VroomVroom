@@ -327,4 +327,27 @@ dist
 .history
 .ionide
 
+# Virtual environment
+venv/
+.env/
+myenv/
+
+# Dependency files
+Pipfile
+Pipfile.lock
+requirements.txt
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Byte-compiled / cached files
+__pycache__/
+*.py[cod]
+*.so
+
+#Files created by me not to be uploaded
+start-up-M-RN.ps1
+
+
 # End of https://www.toptal.com/developers/gitignore/api/jetbrains,visualstudiocode,node,c
