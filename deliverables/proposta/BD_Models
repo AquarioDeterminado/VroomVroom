@@ -1,0 +1,16 @@
+Veloceties:
+	id
+	time
+	velocity
+
+
+Trips:
+	id
+	start_time
+	end_time
+	
+
+Trip_Velocities:
+	id 
+	trip_id
+	velocity_id
