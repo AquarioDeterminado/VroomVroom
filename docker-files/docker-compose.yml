@@ -13,10 +13,7 @@ services:
       - "1883:1883"
 
   node-red:
-    build: ./node-red
-    image: nodered/node-red:latest
-    entrypoint: ["node-red"]
-    command: /bin/sh -c "npm i node-red-dashboard && npm start"
+    build: ./../vroom-api
     environment:
       - TZ=Europe/Amsterdam
     ports:
@@ -25,7 +22,7 @@ services:
       iot-network:
         ipv4_address: 172.28.0.20
     volumes:
-      - node-red-data:/data
+      - ./../vroom-api/data:/data
 
   mongo:
     container_name: mongo
