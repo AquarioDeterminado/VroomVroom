@@ -1,53 +1,54 @@
 services:
-  broker:
-    build:
-      context: ./mosquitto/config
-    image: eclipse-mosquitto
-    entrypoint: ["mosquitto", "-c", "/mosquitto/config/mosquitto.conf"]
-    volumes:
-      - "./mosquitto:/mosquitto"
-    networks:
-      iot-network:
-        ipv4_address: 172.28.0.10
-    ports:
-      - "1883:1883"
+    broker:
+        build:
+            context: ./mosquitto/config
+        image: eclipse-mosquitto
+        entrypoint: [ "mosquitto", "-c", "/mosquitto/config/mosquitto.conf" ]
+        volumes:
+            - "./mosquitto:/mosquitto"
+        networks:
+            iot-network:
+                ipv4_address: 172.28.0.10
+        ports:
+            - "1883:1883"
 
-  node-red:
-    build: ./../vroom-api
-    environment:
-      - TZ=Europe/Amsterdam
-    ports:
-      - "1880:1880"
-    networks:
-      iot-network:
-        ipv4_address: 172.28.0.20
-    volumes:
-      - ./../vroom-api/data:/data
+    node-red:
+        build: ./../vroom-api
+        environment:
+            - TZ=Europe/Amsterdam
+        ports:
+            - "1880:1880"
+        networks:
+            iot-network:
+                ipv4_address: 172.28.0.20
+        volumes:
+            - ./../vroom-api/data:/data
 
-  mongo:
-    container_name: mongo
-    image: mongo:7.0
-    ports:
-      - 27017:27017
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=password
-      - MONGO_INITDB_DATABASE=mydbname
-    volumes:
-      - "mongo_data:/data/db"
-      - "mongo_config:/data/configdb"
-    networks:
-      iot-network:
-        ipv4_address: 172.28.0.30
+    mongo:
+        container_name: mongo
+        image: mongo:7.0
+        ports:
+            - 27017:27017
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=admin
+            - MONGO_INITDB_ROOT_PASSWORD=password
+            - MONGO_INITDB_DATABASE=mydbname
+        volumes:
+            - "mongo_data:/data/db"
+            - "mongo_config:/data/configdb"
+        networks:
+            iot-network:
+                ipv4_address: 172.28.0.30
 
 volumes:
-  node-red-data:
-  mongo_data:
-  mongo_config:
+    node-red-data:
+    mongo_data:
+    mongo_config:
+
 
 networks:
-  iot-network:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: "172.28.0.0/24"
+    iot-network:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: "172.28.0.0/24"
