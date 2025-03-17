@@ -1,16 +1,15 @@
 Veloceties:
-	id
-	time
-	velocity
-
+{
+	id: ID,
+	time: Date,
+	velocity: int,
+	trip: TRIP_ID
+}
 
 Trips:
-	id
-	start_time
-	end_time
-	
+{
+	id: ID,
+	start_time: Date,
+	end_time: Date
+}
 
-Trip_Velocities:
-	id 
-	trip_id
-	velocity_id
